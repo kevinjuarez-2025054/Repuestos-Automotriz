@@ -1,4 +1,4 @@
-package com.kevinlarios.Ejemplo;
+package com.kevinlarios.RepuestosAutomotriz;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +13,6 @@ public class EjemploApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("API Text");
+        System.out.println("API Test");
     }
 }
