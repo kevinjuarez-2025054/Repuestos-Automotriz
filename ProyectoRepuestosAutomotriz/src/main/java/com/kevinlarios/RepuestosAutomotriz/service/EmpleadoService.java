@@ -10,5 +10,4 @@ public interface EmpleadoService {
     Empleado saveEmpleado(Empleado empleado) throws RuntimeException;
     Empleado updateEmpleado(Integer id,Empleado empleado);
     void deleteEmpleado(Integer id);
-
 }

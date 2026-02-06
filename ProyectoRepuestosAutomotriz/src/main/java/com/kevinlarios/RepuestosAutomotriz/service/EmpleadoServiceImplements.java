@@ -17,26 +17,54 @@ public class EmpleadoServiceImplements implements EmpleadoService{
 
     @Override
     public List<Empleado> getAllEmpleados() {
+
         return empleadoRepository.findAll();
     }
 
     @Override
     public Empleado getEmpleadoById(Integer id) {
+
         return empleadoRepository.findById(id).orElse(null);
     }
 
     @Override
     public Empleado saveEmpleado(Empleado empleado) throws RuntimeException {
-        return empleadoRepository.save(empleado);
+        try {
+            if (empleado == null) {
+                throw new IllegalArgumentException("Los datos del empleado son obligatorios");
+            }
+
+            if (empleadoRepository.existsByNombreEmpleadoAndApellidoEmpleadoAndPuestoEmpleadoAndEmailEmpleado(
+                    empleado.getNombreEmpleado(),
+                    empleado.getApellidoEmpleado(),
+                    empleado.getPuestoEmpleado(),
+                    empleado.getEmailEmpleado()
+            )) {
+                throw new RuntimeException("Ya existe un empleado con datos similares");
+            }
+            return empleadoRepository.save(empleado);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
     public Empleado updateEmpleado(Integer id, Empleado empleado) {
-        return null;
+        return empleadoRepository.save(empleado);
     }
 
     @Override
     public void deleteEmpleado(Integer id) {
-        empleadoRepository.deleteById(id);
+        try {
+            if (id == null || id <=0){
+                throw new IllegalArgumentException("El id tiene que ser mallor a 0");
+            }
+            if (!empleadoRepository.existsById(id)) {
+                throw new RuntimeException("id No encontrado");
+            }
+            empleadoRepository.deleteById(id);
+        }catch (Exception e){
+           throw  new RuntimeException(e.getMessage());
+        }
     }
 }
