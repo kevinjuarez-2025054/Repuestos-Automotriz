@@ -37,7 +37,7 @@ public class EmpleadoController {
         try {
             Empleado updatedEmpleado = empleadoService.updateEmpleado(id,empleado);
             return new ResponseEntity<>(updatedEmpleado, HttpStatus.OK);
-        }catch (IllegalArgumentException e){
+        }catch (RuntimeException e){
             return  ResponseEntity.badRequest().body(e.getMessage());
         }
     }

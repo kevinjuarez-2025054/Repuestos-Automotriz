@@ -30,8 +30,20 @@ public class EmpleadoServiceImplements implements EmpleadoService{
     @Override
     public Empleado saveEmpleado(Empleado empleado) throws RuntimeException {
         try {
-            if (empleado == null) {
+            if (empleado == null ||
+            empleado.getNombreEmpleado() == null || empleado.getNombreEmpleado().isBlank() ||
+            empleado.getApellidoEmpleado() == null || empleado.getApellidoEmpleado().isBlank()||
+            empleado.getPuestoEmpleado() == null  || empleado.getPuestoEmpleado().isBlank()||
+            empleado.getEmailEmpleado() == null || empleado.getEmailEmpleado().isBlank()) {
                 throw new IllegalArgumentException("Los datos del empleado son obligatorios");
+            }
+
+            if (!(empleado.getEmailEmpleado().contains("@gmail.com")
+            || empleado.getEmailEmpleado().contains("@yahoo.com")
+            || empleado.getEmailEmpleado().contains("@outlook.com")
+            || empleado.getEmailEmpleado().contains("@hotmail.com"))){
+                throw new IllegalArgumentException("El email solo puede tener los dominios @gmail.com," +
+                        "@yahoo.com,@outlook.com,@hotmail.com");
             }
 
             if (empleadoRepository.existsByNombreEmpleadoAndApellidoEmpleadoAndPuestoEmpleadoAndEmailEmpleado(
@@ -50,7 +62,18 @@ public class EmpleadoServiceImplements implements EmpleadoService{
 
     @Override
     public Empleado updateEmpleado(Integer id, Empleado empleado) {
-        return empleadoRepository.save(empleado);
+        try {
+            if (!(empleado.getEmailEmpleado().contains("@gmail.com")
+                    || empleado.getEmailEmpleado().contains("@yahoo.com")
+                    || empleado.getEmailEmpleado().contains("@outlook.com")
+                    || empleado.getEmailEmpleado().contains("@hotmail.com"))){
+                throw new IllegalArgumentException("El email solo puede tener los dominios @gmail.com," +
+                        "@yahoo.com,@outlook.com,@hotmail.com");
+            }
+            return empleadoRepository.save(empleado);
+        }catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
