@@ -56,7 +56,7 @@ insert into Proveedores (nombre_proveedor,telefono_proveedor,direccion,email_pro
 ('Importadora AutoPlus',50012345,'Zona 9, Guatemala','autoplus@import.com');
 
 insert into Empleados (nombre_empleado,apellido_empleado,puesto_empleado,email_empleado) values
-('Juan','Pérez','Vendedor','juan.perez@empresa.com'),
+('Juan','Pérez','Vendedor','juan.perez@gmail.com'),
 ('María','López','Vendedor','maria.lopez@empresa.com'),
 ('Carlos','Gómez','Cajero','carlos.gomez@empresa.com'),
 ('Ana','Martínez','Administrador','ana.martinez@empresa.com'),
