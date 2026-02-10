@@ -1,6 +1,6 @@
 package com.kevinlarios.RepuestosAutomotriz.repository;
 
-import com.kevinlarios.RepuestosAutomotriz.model.Empleado;
+import com.kevinlarios.RepuestosAutomotriz.entity.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

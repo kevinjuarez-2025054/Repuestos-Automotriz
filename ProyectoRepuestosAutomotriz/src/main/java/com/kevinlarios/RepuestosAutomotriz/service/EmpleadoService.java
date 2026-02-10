@@ -1,6 +1,6 @@
 package com.kevinlarios.RepuestosAutomotriz.service;
 
-import com.kevinlarios.RepuestosAutomotriz.model.Empleado;
+import com.kevinlarios.RepuestosAutomotriz.entity.Empleado;
 
 import java.util.List;
 
