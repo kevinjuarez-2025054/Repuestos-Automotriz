@@ -42,56 +42,6 @@ references Empleados(id_empleado) on delete cascade,
 constraint FK_ventas_repuestos foreign key (id_repuesto)
 references Repuestos(id_repuesto) on delete cascade
 );
-
-insert into Proveedores (nombre_proveedor,telefono_proveedor,direccion,email_proveedor) values
-('AutoPartes Centro',50123456,'Zona 1, Ciudad de Guatemala','contacto@autopartescentro.com'),
-('Repuestos El Volante',50234567,'Zona 7, Ciudad de Guatemala','ventas@elvolante.com'),
-('Motores GT',50345678,'Zona 11, Ciudad de Guatemala','info@motoresgt.com'),
-('Frenos Nacionales',50456789,'Mixco, Guatemala','frenos@nacionales.com'),
-('Repuestos La Terminal',50567890,'Zona 4, Guatemala','terminal@repuestos.com'),
-('Lubricantes Total GT',50678901,'Villa Nueva','lubricantes@totalgt.com'),
-('Autopartes El Águila',50789012,'Zona 12, Guatemala','aguila@autopartes.com'),
-('Distribuidora MotorMax',50890123,'Amatitlán','ventas@motormax.com'),
-('Repuestos San Juan',50901234,'San Juan Sacatepéquez','sanjuan@repuestos.com'),
-('Importadora AutoPlus',50012345,'Zona 9, Guatemala','autoplus@import.com');
-
-insert into Empleados (nombre_empleado,apellido_empleado,puesto_empleado,email_empleado) values
-('Juan','Pérez','Vendedor','juan.perez@gmail.com'),
-('María','López','Vendedor','maria.lopez@empresa.com'),
-('Carlos','Gómez','Cajero','carlos.gomez@empresa.com'),
-('Ana','Martínez','Administrador','ana.martinez@empresa.com'),
-('Luis','Ramírez','Vendedor','luis.ramirez@empresa.com'),
-('Sofía','Hernández','Cajero','sofia.hernandez@empresa.com'),
-('José','Castillo','Bodega','jose.castillo@empresa.com'),
-('Paola','Morales','Vendedor','paola.morales@empresa.com'),
-('Miguel','Rojas','Supervisor','miguel.rojas@empresa.com'),
-('Diana','Flores','Cajero','diana.flores@empresa.com');
-
-insert into Repuestos (nombre_repuesto,categoria_repuesto,precio_compra,precio_venta,id_proveedor) values
-('Filtro de aceite','Motor',50.00,75.00,1),
-('Pastillas de freno','Frenos',120.00,180.00,2),
-('Bujías','Encendido',30.00,50.00,3),
-('Aceite 10W40','Lubricantes',90.00,130.00,6),
-('Disco de freno','Frenos',200.00,280.00,4),
-('Amortiguador','Suspensión',350.00,480.00,8),
-('Correa de tiempo','Motor',150.00,220.00,9),
-('Radiador','Enfriamiento',600.00,850.00,10),
-('Filtro de aire','Motor',45.00,70.00,1),
-('Batería 12V','Eléctrico',700.00,950.00,7);
-
-insert into Ventas (fecha_venta,cantidad,total,id_empleado,id_repuesto) values
-('2026-01-05',2,150.00,1,1),
-('2026-01-06',1,180.00,2,2),
-('2026-01-07',4,200.00,3,3),
-('2026-01-08',3,390.00,4,4),
-('2026-01-09',1,280.00,5,5),
-('2026-01-10',2,960.00,6,6),
-('2026-01-11',1,220.00,7,7),
-('2026-01-12',1,850.00,8,8),
-('2026-01-13',5,350.00,9,9),
-('2026-01-14',1,950.00,10,10);
-
-
 --  Proveedores  --
 delimiter $$
 create procedure sp_createProveedores(in pnombre_proveedor varchar (60),in ptelefono_proveedor int,
@@ -269,3 +219,51 @@ begin
 	delete from Ventas where id_venta = id;
 end $$
 delimiter ;
+
+-- Proveedores --
+CALL sp_createProveedores('AutoPartes Centro',50123456,'Zona 1, Ciudad de Guatemala','auto.partes@gmail.com');
+CALL sp_createProveedores('Repuestos El Volante',50234567,'Zona 7, Ciudad de Guatemala','rpvolantes@yahoo.com');
+CALL sp_createProveedores('Motores GT',50345678,'Zona 11, Ciudad de Guatemala','motores.gt@outlook.com');
+CALL sp_createProveedores('Frenos Nacionales',50456789,'Mixco, Guatemala','frenos@hotmail.com');
+CALL sp_createProveedores('Repuestos La Terminal',50567890,'Zona 4, Guatemala','rpterminal@gmail.com');
+CALL sp_createProveedores('Lubricantes Total GT',50678901,'Villa Nueva','lubricantes.gt@yahoo.com');
+CALL sp_createProveedores('Autopartes El Águila',50789012,'Zona 12, Guatemala','autopartes.aguila@outlook.com');
+CALL sp_createProveedores('Distribuidora MotorMax',50890123,'Amatitlán','dis.motormax@hotmail.com');
+CALL sp_createProveedores('Repuestos San Juan',50901234,'San Juan Sacatepéquez','rpsanjuan@gmail.com');
+CALL sp_createProveedores('Importadora AutoPlus',50012345,'Zona 9, Guatemala','imp.autoplus@yahoo.com');
+
+-- Empleados --
+CALL sp_createEmpleados('Juan','Pérez','Vendedor','juan.perez@gmail.com');
+CALL sp_createEmpleados('María','López','Vendedor','maria.lopez@hotmail.com');
+CALL sp_createEmpleados('Carlos','Gómez','Cajero','carlos.gomez@outlook.com');
+CALL sp_createEmpleados('Ana','Martínez','Administrador','ana.martinez@yahoo.com');
+CALL sp_createEmpleados('Luis','Ramírez','Vendedor','luis.ramirez@gmail.com');
+CALL sp_createEmpleados('Sofía','Hernández','Cajero','sofia.hernandez@hotmail.com');
+CALL sp_createEmpleados('José','Castillo','Bodega','jose.castillo@outlook.com');
+CALL sp_createEmpleados('Paola','Morales','Vendedor','paola.morales@yahoo.com');
+CALL sp_createEmpleados('Miguel','Rojas','Supervisor','miguel.rojas@gmail.com');
+CALL sp_createEmpleados('Diana','Flores','Cajero','diana.flores@hotmail.com');
+
+-- Repuestos --
+CALL sp_createRepuestos('Filtro de aceite','Motor',50.00,75.00,1);
+CALL sp_createRepuestos('Pastillas de freno','Frenos',120.00,180.00,2);
+CALL sp_createRepuestos('Bujías','Encendido',30.00,50.00,3);
+CALL sp_createRepuestos('Aceite 10W40','Lubricantes',90.00,130.00,6);
+CALL sp_createRepuestos('Disco de freno','Frenos',200.00,280.00,4);
+CALL sp_createRepuestos('Amortiguador','Suspensión',350.00,480.00,8);
+CALL sp_createRepuestos('Correa de tiempo','Motor',150.00,220.00,9);
+CALL sp_createRepuestos('Radiador','Enfriamiento',600.00,850.00,10);
+CALL sp_createRepuestos('Filtro de aire','Motor',45.00,70.00,1);
+CALL sp_createRepuestos('Batería 12V','Eléctrico',700.00,950.00,7);
+
+-- Ventas --
+CALL sp_createVentas('2026-01-05',2,150.00,1,1);
+CALL sp_createVentas('2026-01-06',1,180.00,2,2);
+CALL sp_createVentas('2026-01-07',4,200.00,3,3);
+CALL sp_createVentas('2026-01-08',3,390.00,4,4);
+CALL sp_createVentas('2026-01-09',1,280.00,5,5);
+CALL sp_createVentas('2026-01-10',2,960.00,6,6);
+CALL sp_createVentas('2026-01-11',1,220.00,7,7);
+CALL sp_createVentas('2026-01-12',1,850.00,8,8);
+CALL sp_createVentas('2026-01-13',5,350.00,9,9);
+CALL sp_createVentas('2026-01-14',1,950.00,10,10);
