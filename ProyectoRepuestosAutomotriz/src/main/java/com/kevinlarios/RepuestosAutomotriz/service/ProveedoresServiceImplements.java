@@ -46,7 +46,7 @@ public class ProveedoresServiceImplements implements ProveedoresService{
                         "@yahoo.com,@outlook.com,@hotmail.com,@icloud.com");
             }
 
-            if (proveedoresRepository.existByNombreProveedorAndTelefonoProveedorAndDireccionProveedorAndEmailProveedor(
+            if (proveedoresRepository.existsByNombreProveedorAndTelefonoProveedorAndDireccionProveedorAndEmailProveedor(
                     proveedores.getNombreProveedor(),
                     proveedores.getTelefonoProveedor(),
                     proveedores.getDireccionProveedor(),
@@ -64,12 +64,12 @@ public class ProveedoresServiceImplements implements ProveedoresService{
     @Override
     public Proveedores updateProveedores(Integer id, Proveedores proveedores) {
         try {
-            if (!proveedores.getEmailProveedor().contains("@gmail.com") ||
+            if (!(proveedores.getEmailProveedor().contains("@gmail.com") ||
                     proveedores.getEmailProveedor().contains("@yahoo.com") ||
                     proveedores.getEmailProveedor().contains("outlook.com") ||
                     proveedores.getEmailProveedor().contains("@icloud.com") ||
                     proveedores.getEmailProveedor().contains("@hotmail.com")
-            ){
+            )){
                 throw new IllegalArgumentException("El email solo puede tener los dominios @gmail.com," +
                         "@yahoo.com,@outlook.com,@hotmail.com,@icloud.com");
             }
@@ -89,6 +89,7 @@ public class ProveedoresServiceImplements implements ProveedoresService{
             if (!proveedoresRepository.existsById(id)){
                 throw new RuntimeException("Id innexistente");
             }
+            proveedoresRepository.deleteById(id);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
