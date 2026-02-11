@@ -29,10 +29,10 @@ public class ProveedoresServiceImplements implements ProveedoresService{
     public Proveedores saveProvedores(Proveedores proveedores) {
         try {
             if(proveedores == null ||
-            proveedores.getNombreProveedor().isBlank()||
+            proveedores.getNombreProveedor().isBlank()|| proveedores.getNombreProveedor() == null ||
             proveedores.getTelefonoProveedor() == null ||
-            proveedores.getDireccionProveedor().isBlank() ||
-            proveedores.getEmailProveedor().isBlank()){
+            proveedores.getDireccionProveedor().isBlank() || proveedores.getDireccionProveedor() == null ||
+            proveedores.getEmailProveedor().isBlank() || proveedores.getEmailProveedor() == null){
                 throw new IllegalArgumentException("Todos lo datos del proveedor son obligatorios");
             }
 
