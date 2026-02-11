@@ -36,12 +36,12 @@ public class ProveedoresServiceImplements implements ProveedoresService{
                 throw new IllegalArgumentException("Todos lo datos del proveedor son obligatorios");
             }
 
-            if (!proveedores.getEmailProveedor().contains("@gmail.com") ||
+            if (!(proveedores.getEmailProveedor().contains("@gmail.com") ||
                     proveedores.getEmailProveedor().contains("@yahoo.com") ||
                     proveedores.getEmailProveedor().contains("outlook.com") ||
                     proveedores.getEmailProveedor().contains("@icloud.com") ||
                     proveedores.getEmailProveedor().contains("@hotmail.com")
-                ){
+                )){
                 throw new IllegalArgumentException("El email solo puede tener los dominios @gmail.com," +
                         "@yahoo.com,@outlook.com,@hotmail.com,@icloud.com");
             }
