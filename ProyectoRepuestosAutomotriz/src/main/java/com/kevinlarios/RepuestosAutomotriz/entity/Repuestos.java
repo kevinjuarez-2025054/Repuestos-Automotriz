@@ -17,10 +17,10 @@ public class Repuestos {
     private String categoriaRepuesto;
 
     @Column(name = "precio_compra")
-    private boolean precioCompra;
+    private Double precioCompra;
 
     @Column(name = "precio_venta")
-    private boolean precioVenta;
+    private Double precioVenta;
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
@@ -54,19 +54,19 @@ public class Repuestos {
         this.categoriaRepuesto = categoriaRepuesto;
     }
 
-    public boolean isPrecioCompra() {
+    public Double getPrecioCompra() {
         return precioCompra;
     }
 
-    public void setPrecioCompra(boolean precioCompra) {
+    public void setPrecioCompra(Double precioCompra) {
         this.precioCompra = precioCompra;
     }
 
-    public boolean isPrecioVenta() {
+    public Double getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(boolean precioVenta) {
+    public void setPrecioVenta(Double precioVenta) {
         this.precioVenta = precioVenta;
     }
 
