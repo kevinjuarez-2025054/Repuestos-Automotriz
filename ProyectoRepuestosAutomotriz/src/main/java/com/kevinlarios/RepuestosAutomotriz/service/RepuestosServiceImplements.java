@@ -28,10 +28,10 @@ public class RepuestosServiceImplements implements RepuestosService{
     public Repuestos saveRepuestos(Repuestos repuestos) throws RuntimeException {
         try {
             if (repuestos == null ||
-                    repuestos.getNombreRepuesto().isBlank() ||repuestos.getNombreRepuesto() == null ||
-                    repuestos.getCategoriaRepuesto().isBlank() ||repuestos.getCategoriaRepuesto() == null ||
+                    repuestos.getNombreRepuesto() == null || repuestos.getNombreRepuesto().isBlank() ||
+                    repuestos.getCategoriaRepuesto() == null || repuestos.getCategoriaRepuesto().isBlank() ||
                     repuestos.getPrecioCompra() == null ||
-                    repuestos.getPrecioVenta() == null||
+                    repuestos.getPrecioVenta() == null ||
                     repuestos.getProveedores() == null) {
                 throw new IllegalArgumentException("Todos los datos del Repuesto son obligatorios");
             }
