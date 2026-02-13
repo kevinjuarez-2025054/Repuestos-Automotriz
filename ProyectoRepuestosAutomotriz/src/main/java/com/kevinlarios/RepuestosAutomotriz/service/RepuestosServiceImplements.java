@@ -16,7 +16,7 @@ public class RepuestosServiceImplements implements RepuestosService{
 
     @Override
     public List<Repuestos> getAllRepuestos() {
-        return List.of();
+        return repuestosRepository.findAll();
     }
 
     @Override
@@ -36,12 +36,12 @@ public class RepuestosServiceImplements implements RepuestosService{
                 throw new IllegalArgumentException("Todos los datos del Repuesto son obligatorios");
             }
 
-            if (!(repuestosRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
+            if (repuestosRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
                     repuestos.getNombreRepuesto(),
                     repuestos.getCategoriaRepuesto(),
                     repuestos.getPrecioCompra(),
                     repuestos.getPrecioVenta(),
-                    repuestos.getProveedores()))){
+                    repuestos.getProveedores())){
                 throw new RuntimeException("Ya hay un repuesto con esos datos");
             }
             return repuestosRepository.save(repuestos);
