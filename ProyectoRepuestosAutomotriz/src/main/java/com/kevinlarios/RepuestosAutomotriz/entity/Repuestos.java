@@ -22,9 +22,8 @@ public class Repuestos {
     @Column(name = "precio_venta")
     private Double precioVenta;
 
-    @ManyToOne
-    @JoinColumn(name = "id_proveedor")
-    private Proveedores proveedores;
+    @Column(name = "id_proveedor")
+    private Integer idProveedor;
 
 
     // Getters and Setters //
@@ -70,11 +69,11 @@ public class Repuestos {
         this.precioVenta = precioVenta;
     }
 
-    public Proveedores getProveedores() {
-        return proveedores;
+    public Integer getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setProveedores(Proveedores proveedores) {
-        this.proveedores = proveedores;
+    public void setIdProveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
     }
 }
