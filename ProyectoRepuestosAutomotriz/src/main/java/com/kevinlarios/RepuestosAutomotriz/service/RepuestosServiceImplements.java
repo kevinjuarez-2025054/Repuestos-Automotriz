@@ -32,16 +32,16 @@ public class RepuestosServiceImplements implements RepuestosService{
                     repuestos.getCategoriaRepuesto().isBlank() ||repuestos.getCategoriaRepuesto() == null ||
                     repuestos.getPrecioCompra() == null ||
                     repuestos.getPrecioVenta() == null||
-                    repuestos.getIdProveedor() == null) {
+                    repuestos.getProveedores() == null) {
                 throw new IllegalArgumentException("Todos los datos del Repuesto son obligatorios");
             }
 
-            if (repuestosRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndIdProveedor(
+            if (repuestosRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
                     repuestos.getNombreRepuesto(),
                     repuestos.getCategoriaRepuesto(),
                     repuestos.getPrecioCompra(),
                     repuestos.getPrecioVenta(),
-                    repuestos.getIdProveedor())){
+                    repuestos.getProveedores())){
                 throw new RuntimeException("Ya hay un repuesto con esos datos");
             }
             return repuestosRepository.save(repuestos);
@@ -59,7 +59,7 @@ public class RepuestosServiceImplements implements RepuestosService{
                     repuestos.getCategoriaRepuesto().isBlank() ||repuestos.getCategoriaRepuesto() == null ||
                     repuestos.getPrecioCompra() == null ||
                     repuestos.getPrecioVenta() == null||
-                    repuestos.getIdProveedor() == null) {
+                    repuestos.getProveedores() == null) {
                 throw new IllegalArgumentException("Todos los datos del Repuesto son obligatorios");
             }
             return repuestosRepository.save(repuestos);
