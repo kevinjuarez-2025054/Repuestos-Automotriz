@@ -2,6 +2,7 @@ package com.kevinlarios.RepuestosAutomotriz.controller;
 
 import com.kevinlarios.RepuestosAutomotriz.entity.Repuestos;
 import com.kevinlarios.RepuestosAutomotriz.service.RepuestosService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class RepuestosController {
     public List<Repuestos> getAllRepuestos(){return repuestosService.getAllRepuestos();}
 
     @PostMapping
-    public ResponseEntity<Object> createRepuestos(Repuestos repuestos){
+    public ResponseEntity<Object> createRepuestos(@Valid @RequestBody Repuestos repuestos){
         try {
             Repuestos createRepuesto = repuestosService.saveRepuestos(repuestos);
             return new ResponseEntity<>(createRepuesto, HttpStatus.CREATED);
@@ -30,7 +31,7 @@ public class RepuestosController {
     }
 
     @PutMapping
-    public  ResponseEntity<Object> updateRepuestos(Integer id,Repuestos repuestos){
+    public  ResponseEntity<Object> updateRepuestos(Integer id,@Valid @RequestBody Repuestos repuestos){
         try {
             Repuestos updateRepuesto = repuestosService.updateRepuestos(id,repuestos);
             return new ResponseEntity<>(updateRepuesto,HttpStatus.OK);
@@ -40,7 +41,7 @@ public class RepuestosController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteRepuestos(Integer id){
+    public ResponseEntity<Object> deleteRepuestos(@PathVariable Integer id){
         try {
             repuestosService.deleteRepuestos(id);
             return ResponseEntity.ok("Repuesto eliminado correctamente");
