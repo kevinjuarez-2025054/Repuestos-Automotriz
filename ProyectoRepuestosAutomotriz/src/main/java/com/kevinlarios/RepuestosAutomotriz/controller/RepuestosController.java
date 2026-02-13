@@ -39,7 +39,7 @@ public class RepuestosController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteRepuestos(Integer id){
         try {
             repuestosService.deleteRepuestos(id);
