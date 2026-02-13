@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepuestosRepository extends JpaRepository<Repuestos,Integer> {
 
-    boolean exixtsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
+    boolean existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
             String nombreRepuesto,
             String categoriaRepuesto,
             Double precioCompra,

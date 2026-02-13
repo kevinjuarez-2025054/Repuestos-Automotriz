@@ -36,7 +36,7 @@ public class RepuestosServiceImplements implements RepuestosService{
                 throw new IllegalArgumentException("Todos los datos del Repuesto son obligatorios");
             }
 
-            if (!(repuestosRepository.exixtsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
+            if (!(repuestosRepository.existsByNombreRepuestoAndCategoriaRepuestoAndPrecioCompraAndPrecioVentaAndProveedores(
                     repuestos.getNombreRepuesto(),
                     repuestos.getCategoriaRepuesto(),
                     repuestos.getPrecioCompra(),
